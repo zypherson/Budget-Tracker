@@ -11,9 +11,17 @@ function TransactionList({ transactions, onDelete }) {
                   {' '}({t.type})
                 </span>
               </span>
-              <button onClick={() => onDelete(t.id)} style={styles.delete}>
-                ❌
-              </button>
+            <button
+                    onClick={() => {
+                     const confirmDelete = window.confirm(`Delete "${t.text}" for $${t.amount}?`);
+                     if (confirmDelete) {
+                     onDelete(t.id);
+                     }
+                     }}
+                    style={styles.delete}
+                        >
+                     ❌
+            </button>
             </li>
           ))}
         </ul>
